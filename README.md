@@ -520,61 +520,64 @@ var TEMPLATES = {
       ]}
     ]
   },
-  'cardio-a': {
-    focus: 'Cardio + core finisher — A',
-    estMinutes: {strength: 15},
-    note: '⏱ ~45–50 min. One uninterrupted cardio block is the main event — pick a machine and stay on it. Core work is a short finisher.',
+    'cardio-a': {
+    focus: 'Peloton + abs — A',
+    estMinutes: {strength: 12},
+    note: '⏱ ~40–45 min. A 30-min Peloton ride is the main event, then a short no-equipment ab circuit on the floor. Pick the ride type that matches your energy today.',
     exercises: [
       { options: [
-        {name:'Treadmill (incline walk)', cue:'Steady pace or self-paced intervals, incline for extra work', cardio:'30–35 min', cardioMin:32, met:6.0},
-        {name:'Stairmaster', cue:'Steady pace or self-paced intervals', cardio:'30–35 min', cardioMin:32, met:8.0},
-        {name:'Elliptical', cue:'Steady pace or self-paced intervals', cardio:'30–35 min', cardioMin:32, met:5.0}
+        {name:'Peloton — endurance ride', cue:'Steady effort you could hold a short conversation at', cardio:'30 min', cardioMin:30, met:7.0},
+        {name:'Peloton — power zone ride', cue:'Follow the zones; mostly zone 2–4 effort', cardio:'30 min', cardioMin:30, met:7.5},
+        {name:'Peloton — climb ride', cue:'Heavy resistance, slower cadence, push through the hills', cardio:'30 min', cardioMin:30, met:8.0},
+        {name:'Peloton — HIIT / Tabata ride', cue:'All-out bursts with recovery in between', cardio:'30 min', cardioMin:30, met:8.5},
+        {name:'Peloton — low impact ride', cue:'Easy recovery spin, good after a hard leg day', cardio:'30 min', cardioMin:30, met:5.5}
       ]},
       { options: [
-        {name:'Seated Ab Crunch Machine', cue:'Controlled squeeze, no momentum', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Kneeling Cable Crunches', cue:'Round the spine, pull elbows toward knees', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Decline Sit-Ups', cue:'Controlled tempo, avoid yanking the neck', sets:3, reps:'15', rest:'30 sec'}
+        {name:'Crunches', cue:'Lower back stays down, lift with the abs, not the neck', sets:3, reps:'15–20', rest:'30 sec'},
+        {name:'Reverse Crunches', cue:'Curl knees toward chest, lift hips slightly off the floor', sets:3, reps:'12–15', rest:'30 sec'},
+        {name:'Heel Taps', cue:'Shoulders slightly up, reach side to side to touch each heel', sets:3, reps:'15 / side', rest:'30 sec'}
       ]},
       { options: [
-        {name:'Ab Coaster / Torso Rotation Machine', cue:'Rotate through the core, not the arms', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Standing Cable Rotation', cue:'Rotate from the core, keep hips mostly square', sets:3, reps:'12 / side', rest:'30 sec'},
-        {name:'Russian Twists (dumbbell)', cue:'Feet up or down, rotate side to side with control', sets:3, reps:'12 / side', rest:'30 sec'}
+        {name:'Bicycle Crunches', cue:'Slow and controlled, elbow toward opposite knee', sets:3, reps:'15 / side', rest:'30 sec'},
+        {name:'Dead Bug', cue:'Lower back pressed down, extend opposite arm and leg slowly', sets:3, reps:'10 / side', rest:'30 sec'},
+        {name:'Russian Twists (bodyweight)', cue:'Lean back slightly, rotate side to side with control', sets:3, reps:'12 / side', rest:'30 sec'}
       ]},
       { options: [
-        {name:'Cable Woodchoppers', cue:'High-to-low cable, rotate from the core', sets:2, reps:'12 / side', rest:'30 sec'},
-        {name:'Cable Rotational Chop (low-to-high)', cue:'Low-to-high cable, drive through the core', sets:2, reps:'12 / side', rest:'30 sec'},
-        {name:'Side Plank', cue:'Stack hips, hold steady', sets:2, reps:'20–30 sec / side', rest:'30 sec'}
+        {name:'Plank', cue:'Straight line head to heels, brace the core', sets:2, reps:'30–45 sec', rest:'30 sec'},
+        {name:'Side Plank', cue:'Stack hips, hold steady', sets:2, reps:'20–30 sec / side', rest:'30 sec'},
+        {name:'Hollow Body Hold', cue:'Lower back pressed down, arms and legs extended; bend knees to make it easier', sets:2, reps:'20–30 sec', rest:'30 sec'}
       ]}
     ]
   },
   'cardio-b': {
-    focus: 'Cardio + core finisher — B',
-    estMinutes: {strength: 15},
-    note: '⏱ ~45–50 min. Same format — one continuous cardio block, different core work at the end for variety.',
+    focus: 'Peloton + abs — B',
+    estMinutes: {strength: 12},
+    note: '⏱ ~40–45 min. Same format with a harder ride option first and different ab moves for variety.',
     exercises: [
       { options: [
-        {name:'Treadmill (incline walk)', cue:'Steady pace or self-paced intervals, incline for extra work', cardio:'30–35 min', cardioMin:32, met:6.0},
-        {name:'Stairmaster', cue:'Steady pace or self-paced intervals', cardio:'30–35 min', cardioMin:32, met:8.0},
-        {name:'Elliptical', cue:'Steady pace or self-paced intervals', cardio:'30–35 min', cardioMin:32, met:5.0}
+        {name:'Peloton — HIIT / Tabata ride', cue:'All-out bursts with recovery in between', cardio:'30 min', cardioMin:30, met:8.5},
+        {name:'Peloton — climb ride', cue:'Heavy resistance, slower cadence, push through the hills', cardio:'30 min', cardioMin:30, met:8.0},
+        {name:'Peloton — power zone ride', cue:'Follow the zones; mostly zone 2–4 effort', cardio:'30 min', cardioMin:30, met:7.5},
+        {name:'Peloton — endurance ride', cue:'Steady effort you could hold a short conversation at', cardio:'30 min', cardioMin:30, met:7.0},
+        {name:'Peloton — low impact ride', cue:'Easy recovery spin, good after a hard leg day', cardio:'30 min', cardioMin:30, met:5.5}
       ]},
       { options: [
-        {name:'Kneeling Cable Crunches', cue:'Round the spine, pull elbows toward knees', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Seated Ab Crunch Machine', cue:'Controlled squeeze, no momentum', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Hanging Knee Raises (captain\u2019s chair)', cue:'No swinging, controlled tempo', sets:3, reps:'12–15', rest:'30 sec'}
+        {name:'Lying Leg Raises', cue:'Hands under hips, lower legs slowly, stop before your back arches', sets:3, reps:'12–15', rest:'30 sec'},
+        {name:'Reverse Crunches', cue:'Curl knees toward chest, lift hips slightly off the floor', sets:3, reps:'12–15', rest:'30 sec'},
+        {name:'Flutter Kicks', cue:'Lower back pressed down, small quick kicks', sets:3, reps:'20–30 sec', rest:'30 sec'}
       ]},
       { options: [
-        {name:'Pallof Press (cable)', cue:'Press straight out and resist the twist, hips square', sets:2, reps:'12 / side', rest:'30 sec'},
-        {name:'Cable Side Bends', cue:'Slow and controlled, feel it in the obliques', sets:2, reps:'12 / side', rest:'30 sec'},
-        {name:'Standing Oblique Cable Crunch', cue:'Crunch sideways, pull elbow toward hip', sets:2, reps:'12 / side', rest:'30 sec'}
+        {name:'Mountain Climbers', cue:'Hands under shoulders, drive knees in at a steady pace', sets:3, reps:'30 sec', rest:'30 sec'},
+        {name:'Dead Bug', cue:'Lower back pressed down, extend opposite arm and leg slowly', sets:3, reps:'10 / side', rest:'30 sec'},
+        {name:'Bird Dog', cue:'On hands and knees, reach opposite arm and leg, hips level', sets:3, reps:'10 / side', rest:'30 sec'}
       ]},
       { options: [
-        {name:'Plank', cue:'Straight line head to heels, brace the core', sets:3, reps:'30–45 sec', rest:'30 sec'},
-        {name:'Ab Coaster / Torso Rotation Machine', cue:'Rotate through the core, not the arms', sets:3, reps:'15', rest:'30 sec'},
-        {name:'Decline Sit-Ups', cue:'Controlled tempo, avoid yanking the neck', sets:3, reps:'15', rest:'30 sec'}
+        {name:'Side Plank', cue:'Stack hips, hold steady', sets:2, reps:'20–30 sec / side', rest:'30 sec'},
+        {name:'Plank Shoulder Taps', cue:'High plank, tap opposite shoulder, keep hips still', sets:2, reps:'10 / side', rest:'30 sec'},
+        {name:'Plank', cue:'Straight line head to heels, brace the core', sets:2, reps:'30–45 sec', rest:'30 sec'}
       ]}
     ]
   },
-  'rest': {
     focus: 'Rest',
     estMinutes: {strength: 0},
     note: 'Full rest. Recovery is when the shape you\u2019re training for actually gets built.',
