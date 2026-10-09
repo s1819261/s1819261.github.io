@@ -520,7 +520,7 @@ var TEMPLATES = {
       ]}
     ]
   },
-    'cardio-a': {
+  'cardio-a': {
     focus: 'Peloton + abs — A',
     estMinutes: {strength: 12},
     note: '⏱ ~40–45 min. A 30-min Peloton ride is the main event, then a short no-equipment ab circuit on the floor. Pick the ride type that matches your energy today.',
@@ -578,6 +578,7 @@ var TEMPLATES = {
       ]}
     ]
   },
+  'rest': {
     focus: 'Rest',
     estMinutes: {strength: 0},
     note: 'Full rest. Recovery is when the shape you\u2019re training for actually gets built.',
@@ -618,8 +619,8 @@ var TEMPLATE_META = {
   'arm-b-str':    {cat:'arm',    label:'Upper B — strength first'},
   'arm-a':        {cat:'arm',    label:'Arm — set A'},
   'arm-b':        {cat:'arm',    label:'Arm — set B'},
-  'cardio-a':     {cat:'cardio', label:'Cardio — set A'},
-  'cardio-b':     {cat:'cardio', label:'Cardio — set B'},
+  'cardio-a':     {cat:'cardio', label:'Peloton + abs — A'},
+  'cardio-b':     {cat:'cardio', label:'Peloton + abs — B'},
   'rest':         {cat:'rest',   label:'Rest day'}
 };
 var TEMPLATE_ORDER = ['leg-glute','leg-hinge','leg-standard','leg-knee','arm-a-str','arm-b-str','arm-a','arm-b','cardio-a','cardio-b','rest'];
@@ -684,46 +685,44 @@ var ADD_POOLS = {
     {name:'Front Raise (dumbbell)', cue:'Light weight, raise to shoulder height', sets:3, reps:'12–15', rest:'45 sec'}
   ],
   cardio: [
-    {name:'Seated Ab Crunch Machine', cue:'Controlled squeeze, no momentum', sets:3, reps:'15', rest:'30 sec'},
-    {name:'Kneeling Cable Crunches', cue:'Round the spine, pull elbows toward knees', sets:3, reps:'15', rest:'30 sec'},
-    {name:'Decline Sit-Ups', cue:'Controlled tempo, avoid yanking the neck', sets:3, reps:'15', rest:'30 sec'},
-    {name:'Ab Coaster / Torso Rotation Machine', cue:'Rotate through the core, not the arms', sets:3, reps:'15', rest:'30 sec'},
-    {name:'Standing Cable Rotation', cue:'Rotate from the core, keep hips mostly square', sets:3, reps:'12 / side', rest:'30 sec'},
-    {name:'Pallof Press (cable)', cue:'Press straight out and resist the twist, hips square', sets:2, reps:'12 / side', rest:'30 sec'},
-    {name:'Russian Twists (dumbbell)', cue:'Feet up or down, rotate side to side with control', sets:3, reps:'12 / side', rest:'30 sec'},
-    {name:'Cable Woodchoppers', cue:'High-to-low cable, rotate from the core', sets:2, reps:'12 / side', rest:'30 sec'},
-    {name:'Side Plank', cue:'Stack hips, hold steady', sets:2, reps:'20–30 sec / side', rest:'30 sec'},
+    {name:'Crunches', cue:'Lower back stays down, lift with the abs, not the neck', sets:3, reps:'15–20', rest:'30 sec'},
+    {name:'Reverse Crunches', cue:'Curl knees toward chest, lift hips slightly off the floor', sets:3, reps:'12–15', rest:'30 sec'},
+    {name:'Bicycle Crunches', cue:'Slow and controlled, elbow toward opposite knee', sets:3, reps:'15 / side', rest:'30 sec'},
+    {name:'Heel Taps', cue:'Shoulders slightly up, reach side to side to touch each heel', sets:3, reps:'15 / side', rest:'30 sec'},
+    {name:'Lying Leg Raises', cue:'Hands under hips, lower legs slowly, stop before your back arches', sets:3, reps:'12–15', rest:'30 sec'},
+    {name:'Flutter Kicks', cue:'Lower back pressed down, small quick kicks', sets:3, reps:'20–30 sec', rest:'30 sec'},
+    {name:'Dead Bug', cue:'Lower back pressed down, extend opposite arm and leg slowly', sets:3, reps:'10 / side', rest:'30 sec'},
+    {name:'Bird Dog', cue:'On hands and knees, reach opposite arm and leg, hips level', sets:3, reps:'10 / side', rest:'30 sec'},
+    {name:'Russian Twists (bodyweight)', cue:'Lean back slightly, rotate side to side with control', sets:3, reps:'12 / side', rest:'30 sec'},
+    {name:'Mountain Climbers', cue:'Hands under shoulders, drive knees in at a steady pace', sets:3, reps:'30 sec', rest:'30 sec'},
     {name:'Plank', cue:'Straight line head to heels, brace the core', sets:2, reps:'30–45 sec', rest:'30 sec'},
-    {name:'Bicycle Crunches', cue:'Slow and controlled, elbow to opposite knee', sets:3, reps:'15 / side', rest:'30 sec'},
-    {name:'Cable Side Bends', cue:'Slow and controlled, feel it in the obliques', sets:2, reps:'12 / side', rest:'30 sec'},
-    {name:'Hanging Knee Raises (captain\u2019s chair)', cue:'No swinging, controlled tempo', sets:3, reps:'12–15', rest:'30 sec'}
+    {name:'Side Plank', cue:'Stack hips, hold steady', sets:2, reps:'20–30 sec / side', rest:'30 sec'},
+    {name:'Plank Shoulder Taps', cue:'High plank, tap opposite shoulder, keep hips still', sets:2, reps:'10 / side', rest:'30 sec'},
+    {name:'Hollow Body Hold', cue:'Lower back pressed down, arms and legs extended', sets:2, reps:'20–30 sec', rest:'30 sec'},
+    {name:'V-Ups', cue:'Reach hands toward feet, bend knees to make it easier', sets:3, reps:'10–12', rest:'30 sec'}
   ]
 };
-var CARDIO_NAMES = ['Treadmill (incline walk)','Stairmaster','Elliptical','Stationary Bike','Rowing Machine','Outdoor Walk','Run / Jog','Swimming'];
+var CARDIO_NAMES = ['Peloton bike ride','Peloton HIIT ride','Peloton bike — low impact','Outdoor walk'];
 
 /* Calorie estimates: MET x body weight (kg) x hours. Strength MET is
    deliberately modest because much of a lifting session is rest. */
 var MET_STRENGTH = 3.5;
 var QUICK_TYPES = [
-  {id:'incline',    name:'Incline walk',  met:6.0},
-  {id:'stairs',     name:'Stairmaster',   met:8.0},
-  {id:'elliptical', name:'Elliptical',    met:5.0},
-  {id:'bike',       name:'Bike',          met:7.0},
-  {id:'run',        name:'Run / jog',     met:8.0},
-  {id:'walk',       name:'Outdoor walk',  met:3.5},
-  {id:'class',      name:'Class / other', met:6.0}
+  {id:'pelo-end',   name:'Peloton — endurance',    met:7.0},
+  {id:'pelo-pz',    name:'Peloton — power zone',   met:7.5},
+  {id:'pelo-climb', name:'Peloton — climb',        met:8.0},
+  {id:'pelo-hiit',  name:'Peloton — HIIT/Tabata',  met:8.5},
+  {id:'pelo-low',   name:'Peloton — low impact',   met:5.5},
+  {id:'other',      name:'Other cardio',           met:6.0}
 ];
 function guessMet(name){
   var n = name.toLowerCase();
-  if(n.indexOf('stair') !== -1) return 8.0;
-  if(n.indexOf('ellip') !== -1) return 5.0;
-  if(n.indexOf('bike') !== -1 || n.indexOf('cycl') !== -1 || n.indexOf('spin') !== -1) return 7.0;
-  if(n.indexOf('row') !== -1) return 7.0;
-  if(n.indexOf('run') !== -1 || n.indexOf('jog') !== -1 || n.indexOf('hiit') !== -1) return 8.0;
-  if(n.indexOf('swim') !== -1) return 7.0;
-  if(n.indexOf('incline') !== -1) return 6.0;
+  if(n.indexOf('low impact') !== -1) return 5.5;
+  if(n.indexOf('hiit') !== -1 || n.indexOf('tabata') !== -1) return 8.5;
+  if(n.indexOf('climb') !== -1) return 8.0;
+  if(n.indexOf('peloton') !== -1 || n.indexOf('bike') !== -1 || n.indexOf('cycl') !== -1 || n.indexOf('spin') !== -1 || n.indexOf('ride') !== -1) return 7.0;
+  if(n.indexOf('run') !== -1 || n.indexOf('jog') !== -1) return 8.0;
   if(n.indexOf('walk') !== -1) return 3.5;
-  if(n.indexOf('dance') !== -1 || n.indexOf('zumba') !== -1) return 6.0;
   if(n.indexOf('yoga') !== -1 || n.indexOf('stretch') !== -1) return 2.5;
   return 6.0;
 }
@@ -768,7 +767,7 @@ var workoutLog = {};    // {date: {cat, min, kcal, src, type, slot}}
 var lifts = {};         // {exerciseName: {date: weightLbs}}
 var customNames = [];
 var swaps = {};         // {slot: {templateKey: {exKey: typedName}}}
-var quickPrefs = {min:30, type:'incline'};
+var quickPrefs = {min:30, type:'pelo-end'};
 var dayAssign = {}, dayNames = {}, exerciseChoice = {}, addedExercises = {};
 var targets = {leg:2, arm:2, cardio:2};
 var userWeightLbs = 172;
@@ -964,7 +963,7 @@ function loadAll(){
   workoutLog = lg;
   saveLog();
 
-  // Progress is per date now; drop anything older than ~4 months
+  // Progress is per date; drop anything older than ~4 months
   progress = read(K.progress, {}) || {};
   var cutoff = startOfToday(); cutoff.setDate(cutoff.getDate() - 120);
   var ck = dateKey(cutoff);
@@ -1021,6 +1020,7 @@ function renderQuick(){
   typeSel.style.display = (e && e.cat === 'cardio') ? '' : 'none';
   minEl.value = (e && e.min) ? e.min : quickPrefs.min;
   typeSel.value = (e && e.type) ? e.type : quickPrefs.type;
+  if(typeSel.selectedIndex < 0) typeSel.selectedIndex = 0;
   var st = document.getElementById('quickStatus');
   if(!e){ st.className = 'target-status'; st.textContent = 'Not logged'; }
   else {
