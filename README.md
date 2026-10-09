@@ -65,7 +65,6 @@ h1 span{color:var(--accent);}
 .target-edit.open{display:flex;}
 .target-edit .field{display:flex;align-items:center;gap:6px;}
 
-/* QUICK LOG */
 .quick-body{padding:0 16px 14px;}
 .quick-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
 .qbtn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:10px 0;border-radius:9px;border:1px solid var(--line);background:var(--surface-2);color:var(--text-dim);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;}
@@ -145,6 +144,7 @@ h1 span{color:var(--accent);}
 .log-row{display:flex;gap:8px;padding:0 16px 16px;flex-wrap:wrap;}
 .log-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;padding:9px 14px;cursor:pointer;font-weight:700;}
 .log-btn.logged{background:var(--accent);color:var(--on-accent);}
+.load-error{margin-top:18px;padding:16px;border:1px solid var(--danger);border-radius:14px;color:var(--danger);font-size:13px;line-height:1.5;}
 
 .cal-section{margin-top:30px;border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;}
 .cal-head{display:flex;align-items:center;justify-content:space-between;padding:16px;gap:10px;}
@@ -259,10 +259,9 @@ footer{margin-top:26px;padding:18px 16px 30px;text-align:center;font-family:'DM 
   </div>
 </div>
 
-<footer>SAVED ON THIS DEVICE · TAP "BACK UP" NOW AND THEN</footer>
+<footer>VERSION 3 · SAVED ON THIS DEVICE · TAP "BACK UP" NOW AND THEN</footer>
 
 <script>
-/* ---------- EXERCISE DATA ---------- */
 var TEMPLATES = {
   'leg-glute': {
     focus: 'Glutes — heavy hip thrust day',
@@ -586,7 +585,6 @@ var TEMPLATES = {
   }
 };
 
-/* Upper-body strength versions: one heavy lift first, then the original day */
 var HEAVY_PRESS = { options: [
   {name:'Shoulder Press Machine', cue:'Strength lift. Warm up first; last 2 reps should be hard but clean', sets:4, reps:'6–10', rest:'2 min', heavy:true},
   {name:'Dumbbell Shoulder Press', cue:'Strength lift. Press straight overhead, control the descent', sets:4, reps:'6–10', rest:'2 min', heavy:true},
@@ -704,8 +702,6 @@ var ADD_POOLS = {
 };
 var CARDIO_NAMES = ['Peloton bike ride','Peloton HIIT ride','Peloton bike — low impact','Outdoor walk'];
 
-/* Calorie estimates: MET x body weight (kg) x hours. Strength MET is
-   deliberately modest because much of a lifting session is rest. */
 var MET_STRENGTH = 3.5;
 var QUICK_TYPES = [
   {id:'pelo-end',   name:'Peloton — endurance',    met:7.0},
@@ -745,7 +741,6 @@ var MONTH_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','
 var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 var chevronSvg = '<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
 
-/* ---------- STORAGE ---------- */
 var NS = 'toneshape.v1.', NS2 = 'toneshape.v2.';
 var K = {
   assign: NS+'assign', names: NS+'names', choices: NS+'choices', added: NS+'added',
@@ -762,11 +757,11 @@ function write(key, value){
   catch(e){ console.error('Could not save', key, e); }
 }
 
-var progress = {};      // {date: {templateKey: {exKey: [setIdx]}}}
-var workoutLog = {};    // {date: {cat, min, kcal, src, type, slot}}
-var lifts = {};         // {exerciseName: {date: weightLbs}}
+var progress = {};
+var workoutLog = {};
+var lifts = {};
 var customNames = [];
-var swaps = {};         // {slot: {templateKey: {exKey: typedName}}}
+var swaps = {};
 var quickPrefs = {min:30, type:'pelo-end'};
 var dayAssign = {}, dayNames = {}, exerciseChoice = {}, addedExercises = {};
 var targets = {leg:2, arm:2, cardio:2};
@@ -779,7 +774,6 @@ var calCursor = new Date();
 function saveProgress(){ write(K.progress, progress); }
 function saveLog(){ write(K.log, workoutLog); }
 
-/* ---------- DATES ---------- */
 function pad2(n){ return (n < 10 ? '0' : '') + n; }
 function dateKey(d){ return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate()); }
 function startOfToday(){ var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
@@ -802,7 +796,6 @@ function logDateFor(slotId){
 }
 function todaySlotId(){ return INDEX_WEEKDAY[new Date().getDay()]; }
 
-/* ---------- HELPERS ---------- */
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function copy(o){ var out = {}; for(var p in o){ if(Object.prototype.hasOwnProperty.call(o,p)) out[p] = o[p]; } return out; }
 function kg(){ return userWeightLbs * 0.453592; }
@@ -924,7 +917,6 @@ function lastWeight(name, beforeKey){
   return {date: k, w: h[k]};
 }
 
-/* ---------- LOAD ---------- */
 function loadAll(){
   var savedTheme = read(K.theme, null);
   if(savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
@@ -949,9 +941,8 @@ function loadAll(){
   var w = read(K.weight, null);
   if(typeof w === 'number' && w > 0) userWeightLbs = w;
 
-  // Log: migrate the old format ({date: 'leg'}) the first time
   var lg = read(K.log, null);
-  if(!lg){
+  if(!lg || typeof lg !== 'object'){
     lg = {};
     var old = read(K.oldLog, {}) || {};
     Object.keys(old).forEach(function(k){ if(typeof old[k] === 'string') lg[k] = {cat: old[k], src:'manual'}; });
@@ -963,8 +954,8 @@ function loadAll(){
   workoutLog = lg;
   saveLog();
 
-  // Progress is per date; drop anything older than ~4 months
   progress = read(K.progress, {}) || {};
+  if(typeof progress !== 'object') progress = {};
   var cutoff = startOfToday(); cutoff.setDate(cutoff.getDate() - 120);
   var ck = dateKey(cutoff);
   Object.keys(progress).forEach(function(k){ if(k < ck) delete progress[k]; });
@@ -980,7 +971,6 @@ function applyTheme(){
   if(btn) btn.textContent = theme === 'dark' ? '☀' : '☾';
 }
 
-/* ---------- AUTO LOG ---------- */
 function syncAutoLog(slot){
   var day = getEffectiveDay(slot);
   var t = totals(day, getProg(slot.id));
@@ -998,7 +988,6 @@ function syncAutoLog(slot){
   }
 }
 
-/* ---------- QUICK LOG ---------- */
 function quickKcal(cat, min, type){
   if(cat === 'rest') return 0;
   var met = MET_STRENGTH;
@@ -1044,7 +1033,6 @@ function updateQuickEntry(){
   }
 }
 
-/* ---------- TARGETS ---------- */
 function countScheduled(){
   var counts = {leg:0, arm:0, cardio:0, rest:0};
   SLOTS.forEach(function(s){ counts[getCategory(getTemplateKey(s.id))] += 1; });
@@ -1071,7 +1059,6 @@ function renderTargets(){
   document.getElementById('heroEyebrow').textContent = (7 - counts.rest) + ' training days · ' + counts.rest + ' rest';
 }
 
-/* ---------- WEEK ---------- */
 function exHtml(ex, prog, dk){
   var doneIdxs = prog[ex.key] || [];
   var units = ex.cardio ? 1 : ex.sets;
@@ -1136,7 +1123,7 @@ function addRowHtml(slot, day){
   names = names.concat(customNames, CARDIO_NAMES);
   var seen = {}, opts = '';
   names.forEach(function(n){
-    var k = n.toLowerCase();
+    var k = String(n).toLowerCase();
     if(seen[k] || current.indexOf(k) !== -1) return;
     seen[k] = true;
     opts += '<option value="'+esc(n)+'"></option>';
@@ -1232,7 +1219,6 @@ function openDay(id, open){
 
 function renderAll(){ renderQuick(); renderDays(); renderCalendar(); }
 
-/* ---------- DAY EVENTS (delegated) ---------- */
 var daysEl = document.getElementById('days');
 
 daysEl.addEventListener('click', function(e){
@@ -1385,7 +1371,6 @@ document.getElementById('weekStrip').addEventListener('click', function(e){
   document.getElementById('card-'+id).scrollIntoView({behavior:'smooth', block:'start'});
 });
 
-/* ---------- CALENDAR ---------- */
 function renderCalendar(){
   var y = calCursor.getFullYear(), m = calCursor.getMonth();
   document.getElementById('calMonth').textContent = MONTH_NAMES[m] + ' ' + y;
@@ -1457,7 +1442,6 @@ function stat(num, label){
   return '<div class="cal-stat"><div class="cs-num">'+num+'</div><div class="cs-label">'+label+'</div></div>';
 }
 
-/* ---------- CONTROLS ---------- */
 document.getElementById('themeBtn').addEventListener('click', function(){
   theme = theme === 'dark' ? 'light' : 'dark';
   write(K.theme, theme);
@@ -1529,7 +1513,7 @@ document.getElementById('weightInput').addEventListener('change', function(){
 });
 
 document.getElementById('exportBtn').addEventListener('click', function(){
-  var data = {app:'tone-shape', version:2, exported: new Date().toISOString(), keys:{}};
+  var data = {app:'tone-shape', version:3, exported: new Date().toISOString(), keys:{}};
   for(var i=0; i<localStorage.length; i++){
     var k = localStorage.key(i);
     if(k && k.indexOf('toneshape.') === 0) data.keys[k] = localStorage.getItem(k);
@@ -1555,7 +1539,7 @@ document.getElementById('importFile').addEventListener('change', function(){
     try{
       var data = JSON.parse(reader.result);
       if(!data || data.app !== 'tone-shape' || !data.keys) throw new Error('bad file');
-      if(!window.confirm('Replace everything on this device with the backup from ' + (data.exported || 'this file').slice(0,10) + '?')) return;
+      if(!window.confirm('Replace everything on this device with the backup from ' + String(data.exported || 'this file').slice(0,10) + '?')) return;
       var toRemove = [];
       for(var i=0; i<localStorage.length; i++){
         var k = localStorage.key(i);
@@ -1566,7 +1550,7 @@ document.getElementById('importFile').addEventListener('change', function(){
         if(k.indexOf('toneshape.') === 0) localStorage.setItem(k, data.keys[k]);
       });
       location.reload();
-    }catch(e){
+    }catch(err){
       window.alert('That file doesn\u2019t look like a Tone & Shape backup.');
     }
   };
@@ -1584,14 +1568,13 @@ document.getElementById('calToday').addEventListener('click', function(){
   calCursor = new Date(); renderCalendar();
 });
 
-/* ---------- START ---------- */
-loadAll();
-document.getElementById('weightInput').value = userWeightLbs;
-renderAll();
+try{
+  loadAll();
+  document.getElementById('weightInput').value = userWeightLbs;
+  renderAll();
+}catch(err){
+  document.getElementById('days').innerHTML = '<div class="load-error">The app hit an error while loading: ' + esc(err && err.message ? err.message : String(err)) + '. Your saved data is still on this device. Copy this message and send it to me.</div>';
+}
 </script>
 </body>
 </html>
-   renderAll();
-   </script>
-   </body>
-   </html>
